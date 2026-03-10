@@ -1,0 +1,15 @@
+import http from "http";
+import app from "./app.js";
+import dotenv from "dotenv";
+import logger from "./utils/logger.js";
+dotenv.config();
+const port = process.env.PORT || 8000;
+const server = http.createServer(app);
+
+server.listen(port, () => {
+    logger.log(`Server is running on port ${port}`);
+<<<<<<< HEAD
+});
+=======
+});
+>>>>>>> 672d86404baef4bcce82b8878a298326127c4539

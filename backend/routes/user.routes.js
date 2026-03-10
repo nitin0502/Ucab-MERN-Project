@@ -1,0 +1,23 @@
+import express from 'express';
+import {body} from 'express-validator';
+import userController from '../controllers/user.controller.js';
+import auth from '../middlewares/auth.middleware.js';
+const router = express.Router();
+router.post('/register', [
+    body('email').isEmail().withMessage('Please enter a valid email'),
+    body('password').isLength({min: 6}).withMessage('Password must be atleast 6 characters'),
+    body('name.firstname').isLength({min: 3}).withMessage('First name must be atleast 3 characters'),
+] , 
+    userController.registerUser
+)
+router.post('/login', [
+    body('email').isEmail().withMessage('Please enter a valid email'),
+    body('password').isLength({min: 1}).withMessage('Field is empty')
+], auth.handleLoginTokens, userController.loginUser);
+router.get('/profile', auth.authUser,userController.getUserProfile);
+router.get('/logout', auth.authUser, userController.logoutUser);
+<<<<<<< HEAD
+export default router;
+=======
+export default router;
+>>>>>>> 672d86404baef4bcce82b8878a298326127c4539

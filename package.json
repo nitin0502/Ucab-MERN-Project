@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.2"
+  },
+<<<<<<< HEAD
+  "name": "Ucab",
+=======
+  "name": "cabify",
+>>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+  "version": "1.0.0",
+  "description": "Cab booking application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
