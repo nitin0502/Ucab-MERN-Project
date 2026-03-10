@@ -62,8 +62,6 @@ const logoutUser = async (req, res) => {
     await tokenTimerModel.create({token}); // token taake blacklist korlam
     res.status(code.OK).json({message: "Logged out successfully"});
 }
-<<<<<<< HEAD
+
 export default {registerUser , loginUser , getUserProfile , logoutUser};
-=======
-export default {registerUser , loginUser , getUserProfile , logoutUser};
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

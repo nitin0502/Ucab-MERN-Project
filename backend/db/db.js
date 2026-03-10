@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import logger from "../utils/logger.js";
+
 dotenv.config();
+
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI);
@@ -12,8 +14,4 @@ const connectDB = async () => {
     }
 };
 
-<<<<<<< HEAD
 export default connectDB;
-=======
-export default connectDB;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539

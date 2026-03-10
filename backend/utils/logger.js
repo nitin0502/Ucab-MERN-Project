@@ -5,8 +5,4 @@ const logger = {
     info: (...messages) => console.info("\x1b[34m[INFO]\x1b[0m", ...messages)
 };
 
-<<<<<<< HEAD
 export default logger;
-=======
-export default logger;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539

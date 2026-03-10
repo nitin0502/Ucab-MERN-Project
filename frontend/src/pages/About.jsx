@@ -9,11 +9,9 @@ import { useEffect } from "react";
 
 const About = () => {
   useEffect(() => {
-<<<<<<< HEAD
-    document.title = "About | Ucab";
-=======
+
     document.title = "About | Cabify";
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
   }, []);
 
   const fadeIn = {
@@ -85,11 +83,9 @@ const About = () => {
           className="sm:text-8xl text-5xl font-extrabold tracking-wide z-20"
           variants={fadeIn}
         >
-<<<<<<< HEAD
-          Ucab
-=======
+
           Cabify
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
         </motion.h1>
         <motion.h3 
           className="sm:text-4xl text-2xl mt-6 font-extrabold tracking-tight z-20 sm:w-[60%] w-[80%]"
@@ -138,11 +134,9 @@ const About = () => {
           viewport={{ once: true }}
           variants={fadeIn}
         >
-<<<<<<< HEAD
-          At Ucab, we aim to transform urban mobility by providing seamless, reliable, and safe transportation.
-=======
+
           At Cabify, we aim to transform urban mobility by providing seamless, reliable, and safe transportation.
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
         </motion.p>
 
         <div className="flex mt-16 h-fit gap-6 md:flex-row flex-col">
@@ -165,11 +159,9 @@ const About = () => {
             viewport={{ once: true }}
             variants={slideInRight}
           >
-<<<<<<< HEAD
-            <p className="w-[95%]">At Ucab, our mission is to create a transportation ecosystem that works for everyone—riders, drivers, and cities alike. We&apos;re committed to making urban mobility more efficient, equitable, and sustainable.</p>
-=======
+
             <p className="w-[95%]">At CABIFY, our mission is to create a transportation ecosystem that works for everyone—riders, drivers, and cities alike. We&apos;re committed to making urban mobility more efficient, equitable, and sustainable.</p>
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
             <br />
             <p className="w-[95%]">We believe transportation is a fundamental need that should be accessible, affordable, and safe for all. By leveraging technology to connect riders directly with drivers, we&apos;re removing barriers and creating opportunities while reducing the environmental impact of urban movement.</p>
           </motion.div>
@@ -194,11 +186,9 @@ const About = () => {
             variants={staggerContainer}
           >
             {[
-<<<<<<< HEAD
-              { title: "Driver Dignity", desc: "Without drivers, there is no Ucab. Our platform ensures drivers receive fair compensation, respect, and growth opportunities.", icon: "🛡️" },
-=======
+
               { title: "Driver Dignity", desc: "Without drivers, there is no CABIFY. Our platform ensures drivers receive fair compensation, respect, and growth opportunities.", icon: "🛡️" },
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
               { title: "Rider-Centered Design", desc: "Every feature and policy is designed with riders' needs at the forefront.", icon: "🤝" },
               { title: "Sustainable Innovation", desc: "We innovate not just for convenience, but for a more sustainable world.", icon: "🌱" },
               { title: "Inclusive Access", desc: "Everyone deserves reliable transportation, regardless of neighborhood, physical ability, or economic status.", icon: "⏳" },
@@ -218,11 +208,9 @@ const About = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* Our Story and How Ucab works Section */}
-=======
+
       {/* Our Story and How Cabify works Section */}
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
       <div className="min-h-screen bg-gray-800 py-16 md:px-6 px-1 my-28">
         <motion.h2 
           className="text-4xl font-bold w-full text-left mb-10"
@@ -231,11 +219,9 @@ const About = () => {
           viewport={{ once: true }}
           variants={fadeIn}
         >
-<<<<<<< HEAD
-          From Vision to Transformation: The Ucab Journey
-=======
+
           From Vision to Transformation: The CABIFY Journey
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
         </motion.h2>
         <div className="flex mt-16 md:flex-row flex-col-reverse gap-6 justify-center items-center">
           <motion.div 
@@ -245,11 +231,9 @@ const About = () => {
             viewport={{ once: true }}
             variants={slideInLeft}
           >
-<<<<<<< HEAD
-            <p>Ucab began when three transportation engineers—Maria Chen, David Rodriguez, and Amir Patel—observed a gap in the market in 2018. Starting with just 50 drivers in two cities, we built a platform that balances rider reliability with driver dignity. Today, we operate in 75+ cities across 12 countries.</p>
-=======
+
             <p>CABIFY began when three transportation engineers—Maria Chen, David Rodriguez, and Amir Patel—observed a gap in the market in 2018. Starting with just 50 drivers in two cities, we built a platform that balances rider reliability with driver dignity. Today, we operate in 75+ cities across 12 countries.</p>
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
             <br />
             <p>We believe transportation is a fundamental need that should be accessible, affordable, and safe for all. By leveraging technology to connect riders directly with drivers, we&apos;re removing barriers and creating opportunities while reducing the environmental impact of urban movement.</p>
             <br />
@@ -299,11 +283,9 @@ const About = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* The Ucab Experience Section */}
-=======
+
       {/* The Cabify Experience Section */}
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
       <div className="min-h-screen mx-auto my-28 md:px-6 px-1">
         <motion.h2 
           className="text-4xl font-bold text-center mb-10"
@@ -323,11 +305,9 @@ const About = () => {
           variants={scaleIn}
         >
           <div className="dummy h-[95%] w-[80%] relative bg-purple-700">
-<<<<<<< HEAD
-            <img src={expImg} alt="Ucab experience" className="absolute inset-0 w-full h-full object-cover" />
-=======
+
             <img src={expImg} alt="Cabify experience" className="absolute inset-0 w-full h-full object-cover" />
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
           </div>
         </motion.div>
 
@@ -340,11 +320,9 @@ const About = () => {
             variants={slideInLeft}
           >
             <h3 className="text-xl">For Riders:</h3>
-<<<<<<< HEAD
-            <p>Your time matters. Your safety is non-negotiable. Your budget deserves respect. Ucab delivers on all fronts with a rider experience designed around what you truly value:</p>
-=======
+
             <p>Your time matters. Your safety is non-negotiable. Your budget deserves respect. CABIFY delivers on all fronts with a rider experience designed around what you truly value:</p>
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
             <ul className="flex flex-col mt-8 gap-3">
               <li>• <b>Predictable Availability:</b> Never more than 3 minutes from a pickup in urban cores.</li>
               <li>• <b>Transparent Pricing:</b> See exactly what you&apos;ll pay before confirming your ride.</li>
@@ -361,11 +339,9 @@ const About = () => {
             variants={slideInRight}
           >
             <h3 className="text-xl">For Drivers:</h3>
-<<<<<<< HEAD
-            <p>Driving for Ucab means joining a community that invests in your success:</p>
-=======
+
             <p>Driving for CABIFY means joining a community that invests in your success:</p>
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
             <ul className="flex flex-col mt-8 gap-3">
               <li>• <b>Earnings You Can Count On:</b> Keep 80% of every fare—the highest driver share in the industry.</li>
               <li>• <b>Flexible Schedules That Work:</b> Drive when it works for you.</li>
@@ -385,11 +361,9 @@ const About = () => {
           viewport={{ once: true }}
           variants={fadeIn}
         >
-<<<<<<< HEAD
-          The People and Impact Behind Ucab
-=======
+
           The People and Impact Behind CABIFY
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
         </motion.h2>
         <motion.p 
           className="text-lg text-gray-300 mt-4 leading-relaxed md:w-1/2 w-[90%] mx-auto"
@@ -434,11 +408,9 @@ const About = () => {
 
             <div>
               <h4 className="mb-2"><b>Our Culture:</b></h4>
-<<<<<<< HEAD
-              <p>Ucab thrives on diversity—spanning 28 nationalities and 19 languages. We practice &apos;radical transparency,&apos; where every employee has access to company metrics. From an initial team of 12, we&apos;ve grown to over 850 employees globally while maintaining our startup spirit.</p>
-=======
+
               <p>CABIFY thrives on diversity—spanning 28 nationalities and 19 languages. We practice &apos;radical transparency,&apos; where every employee has access to company metrics. From an initial team of 12, we&apos;ve grown to over 850 employees globally while maintaining our startup spirit.</p>
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
             </div>
 
             <div>
@@ -448,13 +420,10 @@ const About = () => {
 
             <div>
               <h4 className="mb-2"><b>In Their Words:</b></h4>
-<<<<<<< HEAD
-              <p className="mb-3">&apos;Ucab transformed my work life. As a single parent, I can earn when my kids are at school and be there when they need me.&apos; <br /> — Elena M., Driver since 2019</p>
-              <p>&apos;I deleted my car-shopping app after using Ucab for three months. The math just made sense.&apos; <br /> — Marcus T., Rider since 2020</p>
-=======
+
               <p className="mb-3">&apos;CABIFY transformed my work life. As a single parent, I can earn when my kids are at school and be there when they need me.&apos; <br /> — Elena M., Driver since 2019</p>
               <p>&apos;I deleted my car-shopping app after using CABIFY for three months. The math just made sense.&apos; <br /> — Marcus T., Rider since 2020</p>
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
             </div>
           </motion.div>
         </div>
@@ -470,11 +439,9 @@ const About = () => {
       >
         <div className="container mx-auto px-4">
           <motion.h2 className="text-3xl font-bold mb-4" variants={fadeIn}>
-<<<<<<< HEAD
-            Ready to Experience Ucab?
-=======
+
             Ready to Experience Cabify?
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
           </motion.h2>
           <motion.p className="text-xl mb-8" variants={fadeIn}>
             Join thousands of satisfied riders.
@@ -494,8 +461,5 @@ const About = () => {
   );
 };
 
-<<<<<<< HEAD
 export default About;
-=======
-export default About;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

@@ -20,8 +20,5 @@ const CreateNewUser = async ( user) => {
     }
 };
 
-<<<<<<< HEAD
 export default CreateNewUser;
-=======
-export default CreateNewUser;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

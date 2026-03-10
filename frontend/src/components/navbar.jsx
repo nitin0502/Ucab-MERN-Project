@@ -183,8 +183,6 @@ const Navbar = () => {
     );
 };
 
-<<<<<<< HEAD
+
 export default Navbar;
-=======
-export default Navbar;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

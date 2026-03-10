@@ -27,8 +27,5 @@ const UserSignUp = () => {
     );
 };
 
-<<<<<<< HEAD
 export default UserSignUp;
-=======
-export default UserSignUp;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

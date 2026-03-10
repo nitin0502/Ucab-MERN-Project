@@ -93,22 +93,18 @@ export default function ContactUs() {
                   variants={itemVariant}
                   whileHover={{ scale: 1.05 }}
                 >
-<<<<<<< HEAD
-                  <FaEnvelope className="mr-3 text-xl text-blue-500" /> contact@Ucab.com
-=======
+
                   <FaEnvelope className="mr-3 text-xl text-blue-500" /> contact@cabify.com
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
                 </motion.div>
                 <motion.div 
                   className="flex items-center justify-center md:justify-start text-gray-700"
                   variants={itemVariant}
                   whileHover={{ scale: 1.05 }}
                 >
-<<<<<<< HEAD
-                  <FaMapMarkerAlt className="mr-3 text-xl text-blue-500" /> 123 Ucab St, City, Country
-=======
+
                   <FaMapMarkerAlt className="mr-3 text-xl text-blue-500" /> 123 Cabify St, City, Country
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -168,8 +164,6 @@ export default function ContactUs() {
       </motion.div>
     </div>
   );
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

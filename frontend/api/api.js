@@ -21,8 +21,6 @@ export const registerUser = async (userData) => {
     } catch (error) {
         throw new Error(error.message);
     }
-<<<<<<< HEAD
+
 };
-=======
-};
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

@@ -29,8 +29,4 @@ app.use('/user', userRoutes);
 app.use('/captain', captainRoutes);
 app.use('/booking', bookingRoutes);
 
-<<<<<<< HEAD
 export default app;
-=======
-export default app;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539

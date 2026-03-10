@@ -10,8 +10,6 @@ const rideSchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now }
 });
 
-<<<<<<< HEAD
+
 module.exports = mongoose.model('ride', rideSchema);
-=======
-module.exports = mongoose.model('ride', rideSchema);
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

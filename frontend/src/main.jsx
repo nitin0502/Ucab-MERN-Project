@@ -10,8 +10,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <App />
     </BrowserRouter>
   </React.StrictMode>
-<<<<<<< HEAD
+
 )
-=======
-)
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

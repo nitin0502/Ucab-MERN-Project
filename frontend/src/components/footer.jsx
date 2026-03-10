@@ -159,11 +159,9 @@ const Footer = () => {
           className="border-t border-gray-800 mt-12 pt-8 text-sm text-center"
           variants={itemVariants}
         >
-<<<<<<< HEAD
-          <p>&copy; {new Date().getFullYear()} Ucab. All rights reserved.</p>
-=======
+
           <p>&copy; {new Date().getFullYear()} Cabify. All rights reserved.</p>
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
         </motion.div>
       </div>
     </motion.footer>
@@ -274,11 +272,9 @@ const contactInfo = [
         />
       </svg>
     ),
-<<<<<<< HEAD
-    text: "support@Ucab.com",
-=======
+
     text: "support@cabify.com",
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
   },
 ];
 

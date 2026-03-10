@@ -71,7 +71,6 @@ const BasicHome = () => {
 
     return (
         <div className="min-h-screen mt-13">
-            {/* Hero Section */}
             <section className="relative h-screen">
                 <div className="absolute inset-0">
                     <img 
@@ -101,11 +100,7 @@ const BasicHome = () => {
                             custom={1}
                             variants={heroTextVariants}
                         >
-<<<<<<< HEAD
                             Experience comfortable and safe rides with Ucab. Book your next journey in seconds.
-=======
-                            Experience comfortable and safe rides with Cabify. Book your next journey in seconds.
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
                         </motion.p>
                         <motion.button 
                             className="bg-blue-500 text-white px-8 py-3 rounded-full text-lg hover:bg-blue-600 transition duration-300"
@@ -121,7 +116,6 @@ const BasicHome = () => {
                 </motion.div>
             </section>
 
-            {/* Features Section */}
             <section className="py-20 bg-gray-50">
                 <motion.div 
                     className="max-w-7xl mx-auto px-4"
@@ -137,11 +131,7 @@ const BasicHome = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-<<<<<<< HEAD
                         Why Choose Ucab?
-=======
-                        Why Choose Cabify?
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
                     </motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {features.map((feature, index) => (
@@ -171,7 +161,6 @@ const BasicHome = () => {
                 </motion.div>
             </section>
 
-            {/* Services Section */}
             <section className="py-20">
                 <motion.div 
                     className="max-w-7xl mx-auto px-4"
@@ -218,7 +207,6 @@ const BasicHome = () => {
                 </motion.div>
             </section>
 
-            {/* CTA Section */}
             <section className="bg-blue-600 py-20">
                 <motion.div 
                     className="max-w-7xl mx-auto px-4 text-center"
@@ -239,11 +227,7 @@ const BasicHome = () => {
                         variants={heroTextVariants}
                         custom={1}
                     >
-<<<<<<< HEAD
                         Join thousands of satisfied customers who trust Ucab for their daily rides.
-=======
-                        Join thousands of satisfied customers who trust Cabify for their daily rides.
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
                     </motion.p>
                     <motion.div 
                         className="flex flex-col sm:flex-row justify-center gap-4"
@@ -273,7 +257,6 @@ const BasicHome = () => {
     );
 };
 
-// Features Data
 const features = [
     {
         icon: <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
@@ -292,7 +275,6 @@ const features = [
     }
 ];
 
-// Services Data
 const services = [
     {
         title: "City Rides",
@@ -316,8 +298,4 @@ const services = [
     }
 ];
 
-<<<<<<< HEAD
 export default BasicHome;
-=======
-export default BasicHome;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539

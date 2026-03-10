@@ -92,8 +92,6 @@ captainSchema.methods.matchPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 }
 const captainModel = mongoose.model("captain", captainSchema);
-<<<<<<< HEAD
+
 export default captainModel;
-=======
-export default captainModel;
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

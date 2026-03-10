@@ -87,8 +87,6 @@ const getCaptainProfile = async (req, res) => {
         res.status(code.BAD_REQUEST).json({message : error.message});
     }
 };
-<<<<<<< HEAD
+
 export default {registerCaptain , loginCaptain , logoutCaptain , getCaptainProfile};
-=======
-export default {registerCaptain , loginCaptain , logoutCaptain , getCaptainProfile};
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

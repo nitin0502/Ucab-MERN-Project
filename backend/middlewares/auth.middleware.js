@@ -44,8 +44,5 @@ const authCaptain = async (req, res, next) => {
     }
 }
 
-<<<<<<< HEAD
 export default { authUser, authCaptain, handleLoginTokens };
-=======
-export default { authUser, authCaptain, handleLoginTokens };
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+

@@ -11,8 +11,6 @@ const tokenTimerSchema = new mongoose.Schema({
         expires: 86400,
     }
 });
-<<<<<<< HEAD
+
 export default mongoose.model("tokenTimer", tokenTimerSchema);
-=======
-export default mongoose.model("tokenTimer", tokenTimerSchema);
->>>>>>> 672d86404baef4bcce82b8878a298326127c4539
+
