@@ -15,11 +15,18 @@ const BookRide = () => {
     const [selectedCabs, setSelectedCabs] = useState([]);
     const [showCabs, setShowCabs] = useState(false);
     const [estimatedFare, setEstimatedFare] = useState(null);
+    const [estimatedDistance, setEstimatedDistance] = useState(null);
 
     const cabTypes = [
-        { type: 'economy', label: 'Economy', price: 10, icon: '🚗', description: 'Budget friendly' },
-        { type: 'comfort', label: 'Comfort', price: 15, icon: '🚙', description: 'More spacious' },
-        { type: 'premium', label: 'Premium', price: 25, icon: '🚘', description: 'Luxury experience' }
+        { type: 'economy', label: 'Economy', ratePerKm: 40, icon: '🚗', description: 'Budget friendly' },
+        { type: 'comfort', label: 'Comfort', ratePerKm: 150, icon: '🚙', description: 'More spacious' },
+        { type: 'premium', label: 'Premium', ratePerKm: 200, icon: '🚘', description: 'Luxury experience' }
+    ];
+
+    const availableDrivers = [
+        { name: 'Brad Pitt', vehicle: 'BMW 7 Series', plate: 'DL03CD5678', rating: 4.7 },
+        { name: 'Johnny Depp', vehicle: 'Audi A6', plate: 'TN04EF1234', rating: 4.6 },
+        { name: 'Will Smith', vehicle: 'Honda Accord', plate: 'KA05GH9012', rating: 4.8 }
     ];
 
     const handleInputChange = (e) => {
@@ -31,15 +38,21 @@ const BookRide = () => {
     };
 
     const calculateFare = () => {
-        const baseFare = cabTypes.find(c => c.type === formData.cabType).price;
-        // Simple calculation: base fare + estimated distance * rate
-        const estimatedFare = baseFare + (Math.random() * 30);
-        setEstimatedFare(Math.round(estimatedFare));
+        const ratePerKm = cabTypes.find(c => c.type === formData.cabType).ratePerKm;
+        // Estimated distance between 10-20 km + base minimum fare of 100
+        const distance = Math.floor(Math.random() * 11) + 10; // 10-20 km
+        const minimumFare = 100;
+        const distanceFare = distance * ratePerKm;
+        const totalFare = Math.max(minimumFare, distanceFare);
+        setEstimatedDistance(distance);
+        setEstimatedFare(Math.round(totalFare));
         setShowCabs(true);
     };
 
     const handleBookRide = async (cab) => {
         try {
+            const driver = availableDrivers[cab - 1];
+            const estimatedDuration = Math.ceil(estimatedDistance * 1.5); // ~1.5 mins per km
             const response = await axios.post(
                 `${import.meta.env.VITE_API_URL || 'http://localhost:4000'}/booking/create`,
                 {
@@ -55,9 +68,10 @@ const BookRide = () => {
                     },
                     cabType: formData.cabType,
                     estimatedFare: estimatedFare,
-                    estimatedDuration: '25 mins',
-                    estimatedDistance: 15,
-                    paymentMethod: formData.paymentMethod
+                    estimatedDuration: `${estimatedDuration} mins`,
+                    estimatedDistance: estimatedDistance,
+                    paymentMethod: formData.paymentMethod,
+                    selectedDriver: driver
                 },
                 {
                     headers: {
@@ -66,7 +80,7 @@ const BookRide = () => {
                 }
             );
 
-            navigate('/tracking', { state: { bookingId: response.data.booking._id } });
+            navigate('/tracking', { state: { bookingId: response.data.booking._id, selectedDriver: driver } });
         } catch (error) {
             console.error('Error booking ride:', error);
             alert('Failed to book ride. Please try again!');
@@ -134,7 +148,7 @@ const BookRide = () => {
                                             <div className="text-3xl mb-2">{cab.icon}</div>
                                             <h3 className="font-bold text-gray-800">{cab.label}</h3>
                                             <p className="text-sm text-gray-600">{cab.description}</p>
-                                            <p className="font-semibold text-blue-600 mt-2">₹{cab.price}</p>
+                                            <p className="font-semibold text-blue-600 mt-2">₹{cab.ratePerKm}/km</p>
                                         </motion.button>
                                     ))}
                                 </div>
@@ -175,11 +189,13 @@ const BookRide = () => {
                                 className="bg-white p-8 rounded-lg shadow-lg"
                             >
                                 <h2 className="text-2xl font-bold text-gray-800 mb-2">Estimated Fare: ₹{estimatedFare}</h2>
-                                <p className="text-gray-600 mb-6">Distance: ~15 km | Duration: ~25 mins</p>
+                                <p className="text-gray-600 mb-6">Distance: ~{estimatedDistance} km | Duration: ~{Math.ceil(estimatedDistance * 1.5)} mins</p>
 
                                 <h3 className="text-xl font-bold text-gray-800 mb-6">Available Cabs Near You</h3>
                                 <div className="space-y-4">
-                                    {[1, 2, 3].map(cab => (
+                                    {[1, 2, 3].map(cab => {
+                                        const driver = availableDrivers[cab - 1];
+                                        return (
                                         <motion.div
                                             key={cab}
                                             className="border border-gray-300 p-4 rounded-lg hover:shadow-lg transition-shadow"
@@ -187,9 +203,10 @@ const BookRide = () => {
                                         >
                                             <div className="flex items-center justify-between">
                                                 <div>
-                                                    <h4 className="font-bold text-gray-800">Driver: John Smith</h4>
-                                                    <p className="text-gray-600">Vehicle: {formData.cabType.toUpperCase()}-{cab}</p>
-                                                    <p className="text-sm text-gray-500">⭐ 4.8 rating | {Math.floor(Math.random() * 5) + 2} mins away</p>
+                                                    <h4 className="font-bold text-gray-800">Driver: {driver.name}</h4>
+                                                    <p className="text-gray-600">Vehicle: {driver.vehicle}</p>
+                                                    <p className="text-gray-600 text-sm">License: {driver.plate}</p>
+                                                    <p className="text-sm text-gray-500">⭐ {driver.rating} rating | {Math.floor(Math.random() * 5) + 2} mins away</p>
                                                 </div>
                                                 <motion.button
                                                     onClick={() => handleBookRide(cab)}
@@ -201,7 +218,8 @@ const BookRide = () => {
                                                 </motion.button>
                                             </div>
                                         </motion.div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             </motion.div>
                         )}

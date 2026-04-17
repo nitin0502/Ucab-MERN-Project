@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import axios from 'axios';
@@ -12,6 +12,9 @@ const RideRating = () => {
     const [donation, setDonation] = useState(0);
     const [refreshments, setRefreshments] = useState([]);
     const [showRefreshments, setShowRefreshments] = useState(false);
+    const [bookingData, setBookingData] = useState(null);
+    const [loadingBooking, setLoadingBooking] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const refreshmentOptions = [
         { id: 1, name: 'Water Bottle', price: 20 },
@@ -35,16 +38,67 @@ const RideRating = () => {
         }
     };
 
+    useEffect(() => {
+        const fetchBooking = async () => {
+            try {
+                const bookingId = location.state?.bookingId;
+                if (!bookingId) return;
+
+                const response = await fetch(
+                    `${import.meta.env.VITE_API_URL || 'http://localhost:4000'}/booking/${bookingId}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        }
+                    }
+                );
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setBookingData(data.booking);
+                }
+            } catch (error) {
+                console.error('Error fetching booking details:', error);
+            } finally {
+                setLoadingBooking(false);
+            }
+        };
+
+        fetchBooking();
+    }, [location.state?.bookingId]);
+
     const handleSubmit = async () => {
         try {
-            const totalFare = 285;
+            if (!rating) {
+                alert('Please rate your ride before completing');
+                return;
+            }
+
+            if (!location.state?.bookingId) {
+                alert('Booking ID not found. Please try again!');
+                return;
+            }
+
+            setIsSubmitting(true);
+
+            const baseFare = bookingData?.estimatedFare ?? 285;
             const refreshmentTotal = refreshments.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const actualFare = baseFare + donation + refreshmentTotal;
+
+            console.log('Submitting ride completion:', {
+                bookingId: location.state?.bookingId,
+                actualFare,
+                rating,
+                review,
+                donations: donation,
+                refreshments
+            });
 
             const response = await axios.post(
                 `${import.meta.env.VITE_API_URL || 'http://localhost:4000'}/booking/complete`,
                 {
                     bookingId: location.state?.bookingId,
-                    actualFare: totalFare,
+                    actualFare,
                     rating,
                     review,
                     donations: donation,
@@ -65,7 +119,8 @@ const RideRating = () => {
             navigate('/booking-history');
         } catch (error) {
             console.error('Error submitting rating:', error);
-            alert('Error occurred. Please try again!');
+            alert(`Error occurred: ${error.response?.data?.error || error.message}. Please try again!`);
+            setIsSubmitting(false);
         }
     };
 
@@ -214,7 +269,7 @@ const RideRating = () => {
                             <div className="space-y-2">
                                 <div className="flex justify-between text-gray-700">
                                     <span>Base Fare</span>
-                                    <span>₹285</span>
+                                    <span>₹{bookingData?.estimatedFare ?? 285}</span>
                                 </div>
                                 {donation > 0 && (
                                     <div className="flex justify-between text-gray-700">
@@ -230,7 +285,7 @@ const RideRating = () => {
                                 )}
                                 <div className="border-t-2 border-blue-300 pt-2 flex justify-between text-lg font-bold text-blue-600">
                                     <span>Total Amount</span>
-                                    <span>₹{285 + donation + refreshments.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</span>
+                                    <span>₹{(bookingData?.estimatedFare ?? 285) + donation + refreshments.reduce((sum, item) => sum + (item.price * item.quantity), 0)}</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -238,11 +293,16 @@ const RideRating = () => {
                         {/* Submit Button */}
                         <motion.button
                             onClick={handleSubmit}
-                            className="w-full bg-green-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors mb-4"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                            disabled={isSubmitting || !rating}
+                            className={`w-full py-4 rounded-lg font-bold text-lg transition-colors mb-4 ${
+                                isSubmitting || !rating
+                                    ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
+                                    : 'bg-green-600 text-white hover:bg-green-700'
+                            }`}
+                            whileHover={!isSubmitting && rating ? { scale: 1.02 } : {}}
+                            whileTap={!isSubmitting && rating ? { scale: 0.98 } : {}}
                         >
-                            Complete Ride
+                            {isSubmitting ? '⏳ Processing...' : rating ? 'Complete Ride' : '⭐ Rate your ride first'}
                         </motion.button>
 
                         <motion.button

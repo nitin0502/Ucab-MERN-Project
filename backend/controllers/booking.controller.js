@@ -132,7 +132,7 @@ export const completeBooking = async (req, res) => {
             {
                 status: 'completed',
                 actualFare,
-                finalAmount: actualFare + (donations || 0) + (refreshments?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0),
+                finalAmount: actualFare,
                 rating,
                 review,
                 donations: donations || 0,
@@ -142,6 +142,10 @@ export const completeBooking = async (req, res) => {
             },
             { new: true }
         );
+
+        if (!booking) {
+            return res.status(404).json({ error: "Booking not found" });
+        }
 
         // Save to ride history
         const rideHistory = new rideHistoryModel({
@@ -154,7 +158,7 @@ export const completeBooking = async (req, res) => {
             duration: booking.estimatedDuration,
             fare: booking.estimatedFare,
             actualFare: booking.actualFare,
-            discount: booking.discount,
+            discount: booking.discount || 0,
             finalAmount: booking.finalAmount,
             paymentMethod: booking.paymentMethod,
             rating,

@@ -11,29 +11,33 @@ const BookingHistory = () => {
             _id: 1,
             pickupLocation: { address: 'Central Delhi' },
             dropOffLocation: { address: 'Airport Terminal 3' },
-            estimatedFare: 285,
-            actualFare: 310,
-            discount: 20,
-            finalAmount: 290,
+            cabType: 'premium',
+            estimatedDistance: 16,
+            estimatedFare: 3200,
+            actualFare: 3200,
+            discount: 100,
+            finalAmount: 3100,
             status: 'completed',
             rating: 5,
             review: 'Excellent service!',
             createdAt: '2024-03-01',
-            captainId: { name: 'John Smith' }
+            captainId: { name: 'Leonardo DiCaprio', rating: 4.9, vehicle: 'Ferrari 488', licensePlate: 'MH06IJ5678' }
         },
         {
             _id: 2,
             pickupLocation: { address: 'Brigade Road' },
             dropOffLocation: { address: 'MG Road Station' },
-            estimatedFare: 150,
-            actualFare: 165,
-            discount: 15,
-            finalAmount: 150,
+            cabType: 'comfort',
+            estimatedDistance: 12,
+            estimatedFare: 1800,
+            actualFare: 1800,
+            discount: 50,
+            finalAmount: 1750,
             status: 'completed',
             rating: 4,
             review: 'Good ride',
             createdAt: '2024-02-28',
-            captainId: { name: 'Sarah Johnson' }
+            captainId: { name: 'Emma Watson', rating: 4.5, vehicle: 'Tesla Model S', licensePlate: 'NY07KL3456' }
         }
     ]);
     const [loading, setLoading] = useState(false);
@@ -132,7 +136,7 @@ const BookingHistory = () => {
                                             <div className="flex-1">
                                                 <div className="flex items-start gap-4">
                                                     <div className="text-2xl">🚕</div>
-                                                    <div>
+                                                    <div className="w-full">
                                                         <div className="flex items-center gap-4 mb-2">
                                                             <p className="font-bold text-gray-800">
                                                                 {booking.pickupLocation.address} → {booking.dropOffLocation.address}
@@ -141,7 +145,10 @@ const BookingHistory = () => {
                                                                 {booking.status.replace('_', ' ').toUpperCase()}
                                                             </span>
                                                         </div>
-                                                        <p className="text-gray-600 text-sm">Driver: {booking.captainId?.name || 'N/A'}</p>
+                                                        <p className="text-gray-600 text-sm">Driver: {booking.captainId?.name || 'N/A'} | Cab: {booking.cabType?.toUpperCase() || 'N/A'}</p>
+                                                        <p className="text-gray-500 text-xs mt-1">
+                                                            Distance: {booking.estimatedDistance ? `${booking.estimatedDistance} km` : 'N/A'} | Rate: {booking.cabType === 'economy' && '₹40/km'}{booking.cabType === 'comfort' && '₹150/km'}{booking.cabType === 'premium' && '₹200/km'}
+                                                        </p>
                                                         <p className="text-gray-500 text-xs mt-1">
                                                             {new Date(booking.createdAt).toLocaleDateString()} at {new Date(booking.createdAt).toLocaleTimeString()}
                                                         </p>
